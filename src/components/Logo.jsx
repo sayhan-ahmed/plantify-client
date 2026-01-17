@@ -10,7 +10,7 @@ const Logo = ({ className = "" }) => {
         className="text-green-600 text-[34px]"
         strokeWidth={16}
       />
-      <span>Plantify</span>
+      <span className="text-green-600">Plantify</span>
     </div>
   );
 };
