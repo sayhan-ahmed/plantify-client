@@ -18,7 +18,6 @@ const Footer = () => {
             backgroundRepeat: "no-repeat",
           }}
         />
-
         <div className="mx-auto px-4 xl:px-12 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
             {/* Column 1: Brand & Socials */}

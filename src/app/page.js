@@ -1,8 +1,12 @@
+import Hero from "../components/Hero";
+
 export default function Home() {
   return (
     <div className="home">
       <main>
-        <h1>Welcome to Plantify</h1>
+        <Hero />
+        <div className="py-20">
+        </div>
       </main>
     </div>
   );
