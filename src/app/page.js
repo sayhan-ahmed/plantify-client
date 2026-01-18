@@ -1,5 +1,6 @@
 import Hero from "../components/Hero";
 import NatureQuote from "../components/NatureQuote";
+import ShopByCategory from "../components/ShopByCategory";
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
       <main>
         <Hero />
         <NatureQuote />
+        <ShopByCategory />
       </main>
     </div>
   );
