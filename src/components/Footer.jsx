@@ -5,7 +5,7 @@ import { FaXTwitter, FaTiktok, FaInstagram, FaYoutube } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <footer className="w-full">
+    <footer className="max-w-[1600px] mx-auto w-full">
       {/* Footer Section */}
       <div className="w-full bg-[#FCFCFC] py-16 xl:py-24 relative overflow-hidden">
         {/* Background Pattern with Opacity */}

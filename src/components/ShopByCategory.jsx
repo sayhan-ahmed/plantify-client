@@ -142,7 +142,7 @@ const ShopByCategory = () => {
   const firstPart = titleParts.join(" ");
 
   return (
-    <section className="bg-[#FAFAF6] transition-colors duration-500 pb-10">
+    <section className="max-w-[1600px] mx-auto bg-[#FAFAF6] transition-colors duration-500 pb-10">
       <div className="mx-10 px-4 xl:px-10">
         {/* Header */}
         <div className="text-center mb-6 animate-fade-in key={currentCategory.id}">

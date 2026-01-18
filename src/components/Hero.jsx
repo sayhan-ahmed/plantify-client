@@ -9,7 +9,7 @@ import {
 
 const Hero = () => {
   return (
-    <div className="relative w-full bg-[#FCFCFC]">
+    <div className="max-w-[1600px] mx-auto relative w-full bg-[#FCFCFC]">
       {/* Hero Content Area */}
       <div className="relative w-full py-4 overflow-hidden">
         {/* Background Pattern */}

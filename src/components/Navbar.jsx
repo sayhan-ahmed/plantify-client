@@ -28,7 +28,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="w-full sticky top-[-40px] z-50">
+    <nav className="max-w-[1600px] mx-auto w-full sticky top-[-40px] z-50">
       {/* Top Bar */}
       <div className="hidden lg:block bg-green-700 text-white">
         <div className="mx-auto px-4 xl:px-12 h-[40px] flex justify-end items-center text-[12px] font-normal tracking-wide">
