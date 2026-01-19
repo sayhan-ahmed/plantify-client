@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "./ui/Button";
 import {
   Search,
   ChevronDown,
@@ -36,10 +37,13 @@ const Hero = () => {
                 life.
               </p>
               <div className="flex flex-col sm:flex-row items-center gap-5 mt-5 mx-auto lg:mx-0">
-                <button className="px-6 py-2.5 bg-[#FFC319] hover:bg-[#ffb300] text-[#1A1A1A] text-[14px] font-bold rounded-full flex items-center gap-2 transition-colors">
+                <Button
+                  variant="secondary"
+                  icon={ArrowRight}
+                  className="px-6 py-2.5"
+                >
                   Shop Now
-                  <ArrowRight size={16} />
-                </button>
+                </Button>
                 <button className="text-[#1A1A1A] text-[14px] font-semibold underline underline-offset-4 hover:text-green-700 transition-colors">
                   View All Product
                 </button>
@@ -117,9 +121,12 @@ const Hero = () => {
               <button className="p-2.5 rounded-lg bg-[#F9F9F9] hover:bg-gray-100 text-gray-800 transition-colors border border-transparent hover:border-gray-200">
                 <SlidersHorizontal size={20} className="transform rotate-90" />
               </button>
-              <button className="flex-1 lg:flex-none px-6 py-2.5 bg-green-600 hover:bg-green-700 text-white text-[13px] font-bold rounded-lg transition-colors shadow-lg shadow-green-600/20">
+              <Button
+                variant="primary"
+                className="flex-1 lg:flex-none px-6 py-2.5 rounded-lg text-[13px] font-bold"
+              >
                 Find Product
-              </button>
+              </Button>
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
+import Button from "./ui/Button";
 
 const SpecialDiscount = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -100,10 +101,9 @@ const SpecialDiscount = () => {
           </div>
 
           {/* CTA Button */}
-          <button className="bg-[#EBC85B] hover:bg-[#e0bc4a] text-[#1A1A1A] font-semibold py-3 px-8 rounded-full transition-all flex items-center gap-2">
+          <Button variant="secondary" icon={ArrowRight} className="px-8">
             Shop now
-            <ArrowRight size={18} />
-          </button>
+          </Button>
         </div>
 
         {/* Right Images*/}
