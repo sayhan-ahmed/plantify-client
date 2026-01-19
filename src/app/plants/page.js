@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { ChevronRight, ChevronLeft } from "lucide-react";
+import { ChevronRight, ChevronLeft, ChevronDown } from "lucide-react";
 import FilterSidebar from "@/components/plants/FilterSidebar";
 import PlantGrid from "@/components/plants/PlantGrid";
 
@@ -37,7 +37,7 @@ const PlantsPage = () => {
         if (!value) queryParams.delete(key);
       }
 
-      const res = await fetch(`http://localhost:5000/plants?${queryParams}`);
+      const res = await fetch(`http://localhost:5001/plants?${queryParams}`);
       const data = await res.json();
 
       if (data.plants) {
@@ -108,19 +108,24 @@ const PlantsPage = () => {
             </p>
 
             <div className="flex items-center gap-3">
-              <span className="text-sm font-semibold text-[#1A1A1A]">
+              <span className="text-base font-semibold font-serif text-[#1A1A1A]">
                 Sort by:
               </span>
-              <select
-                className="bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-green-600"
-                value={filters.sort}
-                onChange={handleSortChange}
-              >
-                <option value="default">Default Sorting</option>
-                <option value="price-asc">Price: Low to High</option>
-                <option value="price-desc">Price: High to Low</option>
-                <option value="rating-desc">Rating: High to Low</option>
-              </select>
+              <div className="relative">
+                <select
+                  className="appearance-none bg-white border border-green-600 rounded-lg pl-4 pr-10 py-2.5 text-sm font-medium text-[#1A1A1A] focus:outline-none cursor-pointer"
+                  value={filters.sort}
+                  onChange={handleSortChange}
+                >
+                  <option value="default">Default Sorting</option>
+                  <option value="price-asc">Price: Low to High</option>
+                  <option value="price-desc">Price: High to Low</option>
+                  <option value="rating-desc">Rating: High to Low</option>
+                </select>
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[#1A1A1A]">
+                  <ChevronDown size={16} strokeWidth={2} />
+                </div>
+              </div>
             </div>
           </div>
 

@@ -1,84 +1,78 @@
 "use client";
 import React from "react";
 import { Heart } from "lucide-react";
-import { BiCart } from "react-icons/bi";
-import Button from "@/components/ui/Button";
+import { FaStar } from "react-icons/fa6";
 
 const PlantCard = ({ plant }) => {
-  return (
-    <div className="bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 group border border-gray-100 flex flex-col h-full">
-      {/* Image Container */}
-      <div className="relative h-[280px] w-full bg-[#FAFAF6] overflow-hidden">
-        {/* Badges */}
-        <div className="absolute top-4 left-4 z-10 flex flex-col gap-2">
-          {plant.isSale && (
-            <span className="bg-red-50 text-red-500 text-xs font-bold px-2 py-1 rounded-md uppercase tracking-wider">
-              {Math.round(
-                ((plant.salePrice - plant.price) / plant.price) * 100,
-              ) * -1}
-              %
-            </span>
-          )}
-          {/* Tag Badges */}
-          {plant.tags && plant.tags.includes("indoor") && (
-            <span className="bg-black/80 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider backdrop-blur-sm">
-              Indoor
-            </span>
-          )}
-        </div>
+  // Calculate discount percentage
+  const discount = plant.isSale
+    ? Math.round(((plant.salePrice - plant.price) / plant.salePrice) * 100)
+    : 0;
 
-        {/* Favorite Button */}
-        <button className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/80 hover:bg-white text-gray-400 hover:text-red-500 transition-colors shadow-sm">
-          <Heart size={18} />
-        </button>
+  return (
+    <div className="bg-white rounded-[32px] p-3 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+      {/* Image Container */}
+      <div className="relative h-[180px] w-full bg-[#F3F4F6] rounded-[24px] overflow-hidden group">
+        {/* Category Badge */}
+        <div className="absolute top-4 left-4 z-10">
+          <span className="bg-[#8C8C8C] text-white text-[11px] font-medium px-3 py-1.5 rounded-full capitalize">
+            {plant.category ? plant.category.split(" ")[0] : "Indoor"}
+          </span>
+        </div>
 
         <img
           src={plant.image}
           alt={plant.name}
-          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+          className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
         />
-
-        {/* Quick Add Overlay */}
-        <div className="absolute bottom-4 right-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-          <button className="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center shadow-lg hover:bg-green-700 transition-colors">
-            <BiCart size={20} />
-          </button>
-        </div>
       </div>
 
       {/* Content */}
-      <div className="p-5 flex-1 flex flex-col">
-        <h3 className="text-lg font-bold text-[#1A1A1A] mb-1 font-serif">
-          {plant.name}
-        </h3>
-
-        {/* Rating */}
-        <div className="flex items-center gap-2 mb-3">
-          <div className="flex text-yellow-400 text-sm">
-            {"★".repeat(Math.round(plant.rating))}
-            <span className="text-gray-200">
-              {"★".repeat(5 - Math.round(plant.rating))}
-            </span>
-          </div>
-          <span className="text-xs text-gray-400 font-medium">
-            ({plant.rating}) • {plant.sold} sold
-          </span>
+      <div className="pt-4 px-1 pb-2">
+        <div className="flex justify-between items-start mb-1">
+          <h3 className="text-lg font-semibold text-[#1A1A1A] font-serif leading-tight">
+            {plant.name}
+          </h3>
+          <button className="text-[#1A1A1A] hover:text-red-500 transition-colors pt-1">
+            <Heart size={22} strokeWidth={2} />
+          </button>
         </div>
 
-        {/* Price */}
-        <div className="mt-auto flex items-center gap-2">
-          {plant.isSale ? (
-            <>
-              <span className="text-red-500 bg-red-50 px-2 py-0.5 rounded text-sm font-bold">
-                ${plant.price.toFixed(2)}
-              </span>
-              <span className="text-gray-400 line-through text-sm">
-                ${plant.salePrice.toFixed(2)}
-              </span>
-            </>
-          ) : (
-            <span className="text-[#1A1A1A] font-bold">
-              ${plant.price.toFixed(2)}
+        {/* Rating & Sold */}
+        <div className="flex items-center gap-2 mb-3">
+          <div className="flex items-center text-yellow-400">
+            <FaStar />
+          </div>
+          <span className="text-sm font-semibold text-gray-500">
+            {plant.rating} ({plant.reviews || 125})
+          </span>
+          <span className="text-gray-300">•</span>
+          <span className="text-sm text-gray-500">{plant.sold} sold</span>
+        </div>
+
+        {/* Price Row */}
+        <div className="flex items-center gap-2">
+          {plant.isSale && (
+            <span className="bg-[#FFD4D4] text-[#E44A4A] text-xs font-bold px-2 py-1 rounded-[6px]">
+              {discount}%
+            </span>
+          )}
+
+          <span className="text-lg font-semibold text-[#1A1A1A]">
+            $
+            {plant.price.toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
+          </span>
+
+          {plant.isSale && (
+            <span className="text-gray-400 line-through text-sm font-medium">
+              $
+              {plant.salePrice.toLocaleString(undefined, {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}
             </span>
           )}
         </div>
