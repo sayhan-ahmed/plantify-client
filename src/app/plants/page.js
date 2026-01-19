@@ -10,6 +10,10 @@ import {
 import FilterSidebar from "@/components/plants/FilterSidebar";
 import PlantGrid from "@/components/plants/PlantGrid";
 import Button from "@/components/ui/Button";
+import Testimonial from "@/components/Testimonial";
+import InstagramFeed from "@/components/InstagramFeed";
+import FAQ from "@/components/FAQ";
+import Newsletter from "@/components/Newsletter";
 
 const PlantsPage = () => {
   const [plants, setPlants] = useState([]);
@@ -216,6 +220,10 @@ const PlantsPage = () => {
           )}
         </div>
       </div>
+      <Testimonial />
+      <InstagramFeed />
+      <FAQ />
+      <Newsletter />
     </div>
   );
 };

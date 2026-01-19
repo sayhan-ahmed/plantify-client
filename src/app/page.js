@@ -3,8 +3,10 @@ import NatureQuote from "../components/NatureQuote";
 import ShopByCategory from "../components/ShopByCategory";
 import AboutUs from "../components/AboutUs";
 import SpecialDiscount from "../components/SpecialDiscount";
+import FAQ from "../components/FAQ";
 import Testimonial from "../components/Testimonial";
 import InstagramFeed from "../components/InstagramFeed";
+import Newsletter from "../components/Newsletter";
 
 export default function Home() {
   return (
@@ -15,8 +17,10 @@ export default function Home() {
         <ShopByCategory />
         <AboutUs />
         <SpecialDiscount />
+        <FAQ />
         <Testimonial />
         <InstagramFeed />
+        <Newsletter />
       </main>
     </div>
   );

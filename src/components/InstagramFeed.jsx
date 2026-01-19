@@ -12,7 +12,7 @@ const instagramImages = {
 
 const InstagramFeed = () => {
   return (
-    <section className="bg-[#FAFAF6] py-16 lg:py-20">
+    <section className="bg-[#FAFAF6] py-16 lg:py-10 lg:pb-28">
       <div className="max-w-[1600px] mx-auto px-4 xl:px-16">
         {/* Header */}
         <div className="text-center mb-9">

@@ -2,7 +2,7 @@ import React from "react";
 
 const NatureQuote = () => {
   return (
-    <div className="max-w-[1600px] mx-auto w-full relative my-12 lg:my-5">
+    <div className="max-w-[1600px] mx-auto w-full relative my-12 lg:my-5 lg:mb-24">
       <div>
         <div className="relative w-full h-[180px] md:h-[240px] lg:h-[300px] overflow-hidden">
           <img
