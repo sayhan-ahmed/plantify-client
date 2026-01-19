@@ -4,9 +4,9 @@ const AboutUs = () => {
   return (
     <section className="bg-[#FAFAF6] py-16 lg:py-24">
       <div className="max-w-[1600px] mx-auto px-4 xl:px-10">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
           {/* Left Column: Image */}
-          <div className="w-full lg:w-1/2">
+          <div className="w-full md:w-1/2">
             <div className="relative right-10 rounded-tr-3xl rounded-br-3xl overflow-hidden h-[300px] lg:h-[500px] w-full shadow-sm">
               <img
                 src="https://i.ibb.co.com/Pstf7hd1/Plan-1.jpg"
@@ -24,7 +24,7 @@ const AboutUs = () => {
             {/* Main Headline */}
             <h2 className="text-3xl lg:text-4xl font-serif font-bold text-[#1A1A1A] mb-5">
               <span className="text-green-600">Bringing Nature</span> Closer
-              <br className="hidden lg:block" />
+              <br/>
               to Your Doorstep
             </h2>
 
