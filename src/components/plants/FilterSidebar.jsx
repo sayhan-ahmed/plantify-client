@@ -7,8 +7,21 @@ const FilterSidebar = ({ filters, setFilters }) => {
     "Indoor Plants",
     "Outdoor Plants",
     "Bedroom Plants",
-    "Workspace Plants",
+    "Office Plants",
     "Bathroom Plants",
+    "Floor Plants",
+    "Artificial Plants",
+    "Succulents",
+    "Hanging Plants",
+    "Tropical Plants",
+    "Pet Friendly",
+    "Air Purifying",
+    "Modern Minimalist",
+    "Urban Jungle",
+    "Boho Chic",
+    "Rare Plants",
+    "Ferns",
+    "Cacti",
   ];
 
   const potSizes = ["Small", "Medium", "Large"];
@@ -52,7 +65,7 @@ const FilterSidebar = ({ filters, setFilters }) => {
         {/* Category */}
         <div className="mb-8">
           <h4 className="font-semibold text-[#1A1A1A] mb-4">Category</h4>
-          <div className="space-y-3">
+          <div className="space-y-3 max-h-[160px] overflow-y-scroll pr-2 custom-scrollbar">
             {categories.map((cat) => (
               <label
                 key={cat}
@@ -62,7 +75,7 @@ const FilterSidebar = ({ filters, setFilters }) => {
                   type="checkbox"
                   checked={filters.category === cat}
                   onChange={() => handleCategoryChange(cat)}
-                  className="w-5 h-5 rounded border-gray-300 text-green-600 focus:ring-green-600 transition-colors"
+                  className="w-5 h-5 rounded border-gray-300 text-green-600 focus:ring-green-600 transition-colors flex-shrink-0"
                 />
                 <span
                   className={`text-[#666666] group-hover:text-green-700 transition-colors ${filters.category === cat ? "font-medium text-green-700" : ""}`}

@@ -20,10 +20,20 @@ const PlantCard = ({ plant }) => {
           </span>
         </div>
 
+        {/* Product Shadow */}
+        <div
+          className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[50%] h-4 pointer-events-none transition-all duration-500 group-hover:w-[70%] group-hover:opacity-70"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 80%)",
+            filter: "blur(4px)",
+          }}
+        />
+
         <img
           src={plant.image}
           alt={plant.name}
-          className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+          className="relative z-10 w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500 mix-blend-multiply"
         />
       </div>
 
