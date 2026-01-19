@@ -174,7 +174,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Copyright Section */}
-      <div className="w-full bg-green-700 text-white py-4 md:py-6">
+      <div className="w-full bg-green-700 text-white py-4">
         <div className="mx-auto px-4 xl:px-12 text-[14px] font-normal">
           © {new Date().getFullYear()} Plantify. All rights reserved
         </div>

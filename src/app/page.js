@@ -4,6 +4,7 @@ import ShopByCategory from "../components/ShopByCategory";
 import AboutUs from "../components/AboutUs";
 import SpecialDiscount from "../components/SpecialDiscount";
 import Testimonial from "../components/Testimonial";
+import InstagramFeed from "../components/InstagramFeed";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <AboutUs />
         <SpecialDiscount />
         <Testimonial />
+        <InstagramFeed />
       </main>
     </div>
   );
