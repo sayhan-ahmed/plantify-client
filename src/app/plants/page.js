@@ -1,12 +1,20 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { ChevronRight, ChevronLeft, ChevronDown } from "lucide-react";
+import {
+  ChevronRight,
+  ChevronLeft,
+  ChevronDown,
+  Filter,
+  X,
+} from "lucide-react";
 import FilterSidebar from "@/components/plants/FilterSidebar";
 import PlantGrid from "@/components/plants/PlantGrid";
+import Button from "@/components/ui/Button";
 
 const PlantsPage = () => {
   const [plants, setPlants] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filters, setFilters] = useState({
     category: "",
     minPrice: "",
@@ -37,7 +45,9 @@ const PlantsPage = () => {
         if (!value) queryParams.delete(key);
       }
 
-      const res = await fetch(`http://localhost:5001/plants?${queryParams}`);
+      const res = await fetch(
+        `https://plantify-server-one.vercel.app/plants?${queryParams}`,
+      );
       const data = await res.json();
 
       if (data.plants) {
@@ -94,8 +104,34 @@ const PlantsPage = () => {
 
       {/* Main Content */}
       <div className="max-w-[1600px] mx-auto px-4 xl:px-20 flex flex-col lg:flex-row gap-8 xl:gap-16">
-        {/* Sidebar */}
-        <FilterSidebar filters={filters} setFilters={setFilters} />
+        {/* Mobile Filter Overlay Background */}
+        {isFilterOpen && (
+          <div
+            className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+            onClick={() => setIsFilterOpen(false)}
+          />
+        )}
+
+        {/* Sidebar (Responsive Drawer) */}
+        <div
+          className={`
+          fixed inset-y-0 left-0 z-50 w-[300px] bg-white p-6 overflow-y-auto transform transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:w-auto lg:p-0 lg:bg-transparent lg:overflow-visible lg:z-auto shadow-xl lg:shadow-none
+          ${isFilterOpen ? "translate-x-0" : "-translate-x-full"}
+        `}
+        >
+          <div className="flex justify-between items-center mb-6 lg:hidden">
+            <h3 className="text-xl font-bold font-serif text-[#1A1A1A]">
+              Filters
+            </h3>
+            <button
+              onClick={() => setIsFilterOpen(false)}
+              className="p-2 hover:bg-gray-100 rounded-full"
+            >
+              <X size={24} />
+            </button>
+          </div>
+          <FilterSidebar filters={filters} setFilters={setFilters} />
+        </div>
 
         {/* Product Grid Area */}
         <div className="flex-1">
@@ -107,23 +143,35 @@ const PlantsPage = () => {
               of {pagination.total} results
             </p>
 
-            <div className="flex items-center gap-3">
-              <span className="text-base font-semibold font-serif text-[#1A1A1A]">
-                Sort by:
-              </span>
-              <div className="relative">
-                <select
-                  className="appearance-none bg-white border border-green-600 rounded-lg pl-4 pr-10 py-2.5 text-sm font-medium text-[#1A1A1A] focus:outline-none cursor-pointer"
-                  value={filters.sort}
-                  onChange={handleSortChange}
-                >
-                  <option value="default">Default Sorting</option>
-                  <option value="price-asc">Price: Low to High</option>
-                  <option value="price-desc">Price: High to Low</option>
-                  <option value="rating-desc">Rating: High to Low</option>
-                </select>
-                <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[#1A1A1A]">
-                  <ChevronDown size={16} strokeWidth={2} />
+            <div className="flex items-center gap-5 w-full sm:w-auto justify-between sm:justify-end">
+              {/* Mobile Filter Button */}
+              <Button
+                onClick={() => setIsFilterOpen(true)}
+                variant="primary"
+                className="lg:hidden flex items-center gap-2 px-4 py-[9px] rounded-lg text-base font-semibold"
+              >
+                <Filter size={18} />
+                <span>Filter</span>
+              </Button>
+
+              <div className="flex items-center gap-3">
+                <span className="hidden sm:inline text-base font-semibold font-serif text-[#1A1A1A]">
+                  Sort by:
+                </span>
+                <div className="relative">
+                  <select
+                    className="appearance-none bg-white border border-green-600 rounded-lg pl-4 pr-10 py-2.5 text-sm font-medium text-[#1A1A1A] focus:outline-none cursor-pointer min-w-[140px]"
+                    value={filters.sort}
+                    onChange={handleSortChange}
+                  >
+                    <option value="default">Default Sorting</option>
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                    <option value="rating-desc">Rating: High to Low</option>
+                  </select>
+                  <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-[#1A1A1A]">
+                    <ChevronDown size={16} strokeWidth={2} />
+                  </div>
                 </div>
               </div>
             </div>

@@ -76,24 +76,58 @@ const FilterSidebar = ({ filters, setFilters }) => {
 
         {/* Price Slider */}
         <div className="mb-8">
-          <h4 className="font-semibold text-[#1A1A1A] mb-4">Price</h4>
-          <div className="flex items-center justify-between text-sm text-[#1A1A1A] font-medium mb-4">
-            <span>$0.00</span>
-            <span>$100.00</span>
+          <div className="flex items-center justify-between mb-1">
+            <h4 className="text-xl font-bold font-serif text-[#1A1A1A]">
+              Price
+            </h4>
+            <span className="text-lg font-medium text-[#1A1A1A] font-serif">
+              ${filters.minPrice || 0} - ${filters.maxPrice || 100}
+            </span>
           </div>
-          {/* Range Input */}
-          <input
-            type="range"
-            min="0"
-            max="100"
-            className="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-green-600"
-            value={filters.maxPrice || 100}
-            onChange={(e) =>
-              setFilters((prev) => ({ ...prev, maxPrice: e.target.value }))
-            }
-          />
-          <div className="mt-2 text-right text-sm text-green-600 font-semibold">
-            Max: ${filters.maxPrice || 100}
+
+          {/* Custom Range Input */}
+          <div className="relative w-full h-8 flex items-center">
+            <input
+              type="range"
+              min="0"
+              max="100"
+              className="w-full h-3 rounded-full appearance-none cursor-pointer focus:outline-none"
+              style={{
+                background: `linear-gradient(to right, #16a34a ${filters.maxPrice || 100}%, #e5e7eb ${filters.maxPrice || 100}%)`,
+              }}
+              value={filters.maxPrice || 100}
+              onChange={(e) =>
+                setFilters((prev) => ({ ...prev, maxPrice: e.target.value }))
+              }
+            />
+            <style jsx>{`
+              input[type="range"]::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                width: 28px;
+                height: 28px;
+                background: #16a34a;
+                border: 4px solid white;
+                border-radius: 50%;
+                cursor: pointer;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                transition:
+                  transform 0.1s,
+                  box-shadow 0.1s;
+              }
+              input[type="range"]::-webkit-slider-thumb:hover {
+                transform: scale(1.1);
+                box-shadow: 0 0 15px rgba(22, 163, 74, 0.3);
+              }
+              input[type="range"]::-moz-range-thumb {
+                width: 28px;
+                height: 28px;
+                background: #16a34a;
+                border: 4px solid white;
+                border-radius: 50%;
+                cursor: pointer;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+              }
+            `}</style>
           </div>
         </div>
 
