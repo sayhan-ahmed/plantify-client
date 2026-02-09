@@ -1,4 +1,5 @@
-# Plantify Client
+# Plantify Client 
+### (Under development – More features will be added soon)
 
 ![Live Demo Badge](https://img.shields.io/badge/Live_Demo-Plantify-00C853?style=for-the-badge&logo=vercel&logoColor=white)
 
